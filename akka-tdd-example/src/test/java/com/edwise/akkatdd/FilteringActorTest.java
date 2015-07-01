@@ -48,7 +48,7 @@ public class FilteringActorTest {
             filterActor.tell(new Event(5), getTestActor());
             filterActor.tell(new Event(6), getTestActor());
 
-            Object[] msgs = receiveN(9);
+            Object[] msgs = receiveN(6);
             List<Integer> values =
                     Arrays.stream(msgs)
                             .map((e) -> ((Event) e).getNum())
