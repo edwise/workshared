@@ -51,10 +51,30 @@ public class MapsTest {
 
         Map<String, String> map = Maps.newHashMap(sourceMap);
 
-        assertThat(map).hasSize(sourceMap.size())
+        assertThat(map).hasSize(map.size())
                 .contains(
                         entry("header1", "valueHeader1"),
                         entry("header2", "valueHeader2"),
                         entry("header3", "valueHeader3"));
+    }
+
+    @Test
+    public void testNewHashMapsWithMapUnModificableWhenPutAnotherEntryThenResultIsCorrect() {
+        Map<String, String> modificableMap = Maps.newHashMap();
+        modificableMap.put("header1", "valueHeader1");
+        modificableMap.put("header2", "valueHeader2");
+        modificableMap.put("header3", "valueHeader3");
+        sourceMap = Collections.unmodifiableMap(modificableMap);
+
+        Map<String, String> map = Maps.newHashMap(sourceMap);
+
+        map.put("header4", "valueHeader4");
+
+        assertThat(map).hasSize(map.size())
+                .contains(
+                        entry("header1", "valueHeader1"),
+                        entry("header2", "valueHeader2"),
+                        entry("header3", "valueHeader3"),
+                        entry("header4", "valueHeader4"));
     }
 }
