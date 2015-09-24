@@ -1,7 +1,9 @@
 package com.edwise.restmultipart.resource;
 
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
-import org.glassfish.jersey.media.multipart.FormDataParam;
+import com.edwise.restmultipart.entity.FileInfo;
+import com.edwise.restmultipart.entity.PostResult;
+import org.glassfish.jersey.media.multipart.FormDataBodyPart;
+import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -9,23 +11,29 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URI;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
 @Path("file")
 public class FileResource {
 
     private final static String FILE_PATH = "C:/temp/copies/";
+
+    @Context
+    private UriInfo uriInfo;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -45,7 +53,7 @@ public class FileResource {
 
     @GET
     @Path("/{name}")
-    @Produces("text/plain")
+    @Produces(MediaType.TEXT_PLAIN)
     public Response getFileByName(@PathParam("name") String name) {
         File file = new File(FILE_PATH + name);
         Response.ResponseBuilder response = Response.ok(file);
@@ -55,34 +63,37 @@ public class FileResource {
 
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response uploadFile(@FormDataParam("file") InputStream uploadedInputStream,
-                               @FormDataParam("file") FormDataContentDisposition fileDetail) {
-        String fileLocation = FILE_PATH
-                + new Random().nextInt() + "_" + fileDetail.getFileName();
-        try {
-            Files.copy(uploadedInputStream, Paths.get(fileLocation),
-                    StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response uploadFile(FormDataMultiPart formParams) {
+        // TODO tratar campos con Strings...
+        PostResult result = new PostResult();
+        for (Map.Entry<String, List<FormDataBodyPart>> entryBodyPart : formParams.getFields().entrySet()) {
+            for (FormDataBodyPart bodyPart : entryBodyPart.getValue()) {
+                String fileLocation = FILE_PATH
+                        + bodyPart.getFormDataContentDisposition().getFileName();
+                try {
+                    Files.copy(bodyPart.getEntityAs(File.class).toPath(),
+                            Paths.get(fileLocation),
+                            StandardCopyOption.REPLACE_EXISTING);
+
+                    FileInfo fileInfo = new FileInfo();
+                    fileInfo.setFileName(bodyPart.getFormDataContentDisposition().getFileName());
+                    fileInfo.setTempPath(createURIFromResource(
+                            bodyPart.getFormDataContentDisposition().getFileName()).toString());
+                    result.addPath(fileInfo);
+                    result.addOriginalPayloadEntry("a", "123");
+                    result.addOriginalPayloadEntry("b", "456");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
-//      CON JAVA 6
-//        try {
-//            FileOutputStream out;
-//            int read = 0;
-//            byte[] bytes = new byte[1024];
-//            out = new FileOutputStream(new File(fileLocation));
-//            while ((read = uploadedInputStream.read(bytes)) != -1) {
-//                out.write(bytes, 0, read);
-//            }
-//            out.flush();
-//            out.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-        String output = "File successfully uploaded to : " + fileLocation;
-        return Response.status(Response.Status.NO_CONTENT).entity(output).build();
+        return Response.status(Response.Status.OK).entity(result).build();
     }
 
+    private URI createURIFromResource(String fileName) {
+        UriBuilder uriBuilder = uriInfo.getRequestUriBuilder();
+        return uriBuilder.path(fileName).build();
+    }
 }
