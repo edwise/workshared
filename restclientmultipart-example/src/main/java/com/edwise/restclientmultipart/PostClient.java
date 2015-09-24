@@ -10,15 +10,22 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.File;
 
 public class PostClient {
 
     public static void main(String[] args) {
-        final FileDataBodyPart filePart = new FileDataBodyPart("file", new File("C:/P3220236.jpg"));
+        final FileDataBodyPart filePart =
+                new FileDataBodyPart("file", new File("C:/P3220236.jpg"));
+        final FileDataBodyPart secondFilePart =
+                new FileDataBodyPart("file", new File("C:/eula.1042.txt"));
         final FormDataMultiPart multipart = (FormDataMultiPart) new FormDataMultiPart()
-                .bodyPart(filePart);
+//                .field("dato123", "valor456")
+//                .field("dato567", "valor789")
+                .bodyPart(filePart)
+                .bodyPart(secondFilePart);
 
         Client client =
                 ClientBuilder.newClient(
@@ -27,9 +34,10 @@ public class PostClient {
                                 .register(MultiPartFeature.class));
         WebTarget target = client.target("http://localhost:8080/api/").path("file");
 
-        final Response response = target.request()
+        final Response response = target.request(MediaType.APPLICATION_JSON_TYPE)
                 .post(Entity.entity(multipart, multipart.getMediaType()));
 
         System.out.println("Response Status: " + response.getStatus());
+        System.out.println("Body: " + response.readEntity(String.class));
     }
 }
