@@ -1,0 +1,395 @@
+{
+  default: {
+    name: 'Default',
+    countryCode: 'default',
+    currency: {
+      baseCurrency: 'USD',
+      currencySymbol: '$',
+      currencyPosition: 'left'
+    },
+    localization: {
+      date: {
+        shortDate: 'MM/DD/YYYY',
+        shortDateTime: 'MM/DD/YYYY HH:mm',
+        fullDate: 'MM, DDord YYYY'
+      },
+      hour: '12h'
+    },
+    geo: {
+      lat: '40.467311',
+      lng: '-3.742261',
+      zoom: '2'
+    },
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb'],
+    bidMargin: 50
+  },
+  es: {
+    name: 'Spain',
+    countryCode: 'es',
+    currency: {
+      baseCurrency: 'EUR',
+      currencySymbol: '€',
+      currencyPosition: 'right'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'DD de MM de YYYY'
+      },
+      hour: '24h'
+    },
+    geo: {
+      lat: '40.467311',
+      lng: '-3.742261',
+      zoom: '8'
+    },
+    bidMargin: 60,
+    active: true,
+    pricingModels:['f-cpm'],
+    mediaTypes: ['openRtb']
+
+  },
+  us: {
+    name: 'United States',
+    countryCode: 'us',
+    currency: {
+      baseCurrency: 'USD',
+      currencySymbol: '$',
+      currencyPosition: 'left'
+    },
+    localization: {
+      date: {
+        shortDate: 'MM/DD/YYYY',
+        shortDateTime: 'MM/DD/YYYY HH:mm',
+        fullDate: 'MM, DDord YYYY'
+      },
+      hour: '12h'
+    },
+    geo: {
+      lat: '40.07597',
+      lng: '-99.667969',
+      zoom: '5'
+    },
+    bidMargin: 50,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  gb: {
+    name: 'United Kingdom',
+    countryCode: 'gb',
+    currency: {
+      baseCurrency: 'GBP',
+      currencySymbol: '£',
+      currencyPosition: 'left'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'MM, DDord YYYY'
+      },
+      hour: '24h'
+    },
+    geo: {
+      lat: '52.217494',
+      lng: '-0.944824',
+      zoom: '7'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  bg: {
+    name: 'Bulgaria',
+    countryCode: 'bg',
+    currency: {
+      baseCurrency: 'EUR',
+      currencySymbol: '€',
+      currencyPosition: 'right'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'DD MM YYYY'
+      },
+      hour: '24h'
+    },
+    geo: {
+      lat: '42.653134',
+      lng: '25.090322',
+      zoom: '8'
+    },
+    bidMargin: {
+      openRtb: '0'
+    },
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  pt: {
+    name: 'Portugal',
+    countryCode: 'pt',
+    currency: {
+      baseCurrency: 'EUR',
+      currencySymbol: '€',
+      currencyPosition: 'right'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'DD MM YYYY'
+      },
+      hour: '12h'
+    },
+    geo: {
+      lat: '39.60463',
+      lng: '-8.151855',
+      zoom: '8'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  sg: {
+    name: 'Singapore',
+    countryCode: 'sg',
+    currency: {
+      baseCurrency: 'USD',
+      currencySymbol: '$',
+      currencyPosition: 'left'
+    },
+    localization: {
+      date: {
+        shortDate: 'MM/DD/YYYY',
+        shortDateTime: 'MM/DD/YYYY HH:mm',
+        fullDate: 'MM, DDord YYYY'
+      },
+      hour: '24h'
+    },
+    geo: {
+      lat: '1.337083',
+      lng: '103.842022',
+      zoom: '11'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  it: {
+    name: 'Italy',
+    countryCode: 'it',
+    currency: {
+      baseCurrency: 'EUR',
+      currencySymbol: '€',
+      currencyPosition: 'right'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'DD MM YYYY'
+      },
+      hour: '24h'
+    },
+    geo: {
+      lat: '42.636309',
+      lng: '12.699216',
+      zoom: '7'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  fr: {
+    name: 'France',
+    countryCode: 'fr',
+    currency: {
+      baseCurrency: 'EUR',
+      currencySymbol: '€',
+      currencyPosition: 'right'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'DD MM YYYY'
+      },
+      hour: '24h'
+    },
+    geo: {
+      lat: '46.772132',
+      lng: '2.521366',
+      zoom: '7'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  ph: {
+    name: 'Philippines',
+    countryCode: 'ph',
+    currency: {
+      baseCurrency: 'USD',
+      currencySymbol: '$',
+      currencyPosition: 'left'
+    },
+    localization: {
+      date: {
+        shortDate: 'MM/DD/YYYY',
+        shortDateTime: 'MM/DD/YYYY HH:mm',
+        fullDate: 'MM, DDord YYYY'
+      },
+      hour: '12h'
+    },
+    geo: {
+      lat: '14.671117',
+      lng: '121.080322',
+      zoom: '8'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  pl: {
+    name: 'Poland',
+    countryCode: 'pl',
+    currency: {
+      baseCurrency: 'EUR',
+      currencySymbol: '€',
+      currencyPosition: 'right'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'DD MM YYYY'
+      },
+      hour: '24h'
+    },
+    geo: {
+      lat: '52.591937',
+      lng: '18.705683',
+      zoom: '7'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  de: {
+    name: 'Germany',
+    countryCode: 'de',
+    currency: {
+      baseCurrency: 'EUR',
+      currencySymbol: '€',
+      currencyPosition: 'right'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'DD MM YYYY'
+      },
+      hour: '24h'
+    },
+    geo: {
+      lat: '51.069141',
+      lng: '10.187854',
+      zoom: '7'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  co: {
+    name: 'Colombia',
+    countryCode: 'co',
+    currency: {
+      baseCurrency: 'USD',
+      currencySymbol: '$',
+      currencyPosition: 'left'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'DD de MM de YYYY'
+      },
+      hour: '12h'
+    },
+    geo: {
+      lat: '3.343356',
+      lng: '-73.132782',
+      zoom: '7'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  mx: {
+    name: 'Mexico',
+    countryCode: 'mx',
+    currency: {
+      baseCurrency: 'USD',
+      currencySymbol: '$',
+      currencyPosition: 'left'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'DD de MM de YYYY'
+      },
+      hour: '12h'
+    },
+    geo: {
+      lat: '23.634501',
+      lng: '-102.552784',
+      zoom: '6'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  },
+  pe: {
+    name: 'Peru',
+    countryCode: 'pe',
+    currency: {
+      baseCurrency: 'USD',
+      currencySymbol: '$',
+      currencyPosition: 'left'
+    },
+    localization: {
+      date: {
+        shortDate: 'DD/MM/YYYY',
+        shortDateTime: 'DD/MM/YYYY HH:mm',
+        fullDate: 'DD de MM de YYYY'
+      },
+      hour: '12h'
+    },
+    geo: {
+      lat: '-10.769647',
+      lng: '-75.938004',
+      zoom: '6'
+    },
+    bidMargin: 0,
+    active: true,
+    pricingModels:['d-cpm'],
+    mediaTypes: ['openRtb']
+  }
+}
