@@ -1,0 +1,1 @@
+Test simple de uso de una libreria de compresión/descompresión de LZO en java.
