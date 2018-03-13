@@ -41,8 +41,8 @@ public class JsonCrosserApp {
 //        System.out.println("SonataUser random: " + sonataUsers.get(randomInRange(0, sonataUsers.size() - 1)));
 //        System.out.println("sonataCurrencies list size: " + sonataCurrencies.size());
 //        System.out.println("Currencies: ");
-//        sonataCurrencies.entrySet()
-//                        .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
+        sonataCurrencies.entrySet()
+                        .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
 
         List<MergedResult> mergedResults = crossLists(bidderOwners, sonataUsers);
         System.out.println("Size: " + mergedResults.size());
@@ -99,7 +99,8 @@ public class JsonCrosserApp {
                                 }
 
                                 return sonataCurrency == null ||
-                                       !mergedResult.getCurrency().equals(sonataCurrency.getCurrency().getBaseCurrency());
+                                       !mergedResult.getCurrency()
+                                                    .equalsIgnoreCase(sonataCurrency.getCurrency().getBaseCurrency());
 
                             })
                             .collect(Collectors.toList());
