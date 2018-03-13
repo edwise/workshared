@@ -1,0 +1,1 @@
+Example of and multipart endpoint that receives a file and a "Uploader Client" (a test) to send a multipart client request.
